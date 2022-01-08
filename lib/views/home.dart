@@ -71,14 +71,22 @@ class _HomeState extends State<Home> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.all(20),
-                              child: Text("${todo.yapilacak_is}",style: TextStyle(fontSize: screenHeight*0.03,color: Colors.white),),
+                              child: Text("${todo.yapilacak_is}",style: TextStyle(fontSize: screenHeight*0.025,color: Colors.white),),
                             ),
                             Spacer(),
                             IconButton(onPressed: (){
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   backgroundColor: Colors.black38,
-                                  content: Text("${todo.yapilacak_is} silinsin mi?"),
+                                  content: SizedBox(
+                                      height: screenHeight*0.05 ,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text("${todo.yapilacak_is} silinsin mi?",style: TextStyle(fontSize: screenHeight*0.02),),
+                                        ],
+                                      )),
                                   action: SnackBarAction(
                                     label: "Evet",
                                     textColor: Colors.white,
