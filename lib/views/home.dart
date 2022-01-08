@@ -15,6 +15,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 
   bool isSearching = false;
+  bool focus = false;
 
   @override
   void initState() {
@@ -32,7 +33,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         backgroundColor: Colors.black38,
         title: isSearching ?
-        TextField(style: TextStyle(color: Colors.white), decoration: InputDecoration(hintText: "Ara",hintStyle: TextStyle(color:Colors.white)),onChanged: (result){
+        TextField(autofocus: focus,style: TextStyle(color: Colors.white), decoration: InputDecoration(hintText: "Ara",hintStyle: TextStyle(color:Colors.white)),onChanged: (result){
           context.read<HomeCubit>().search(result);
         },) :
         Text("Yapılacaklar"),
@@ -40,9 +41,14 @@ class _HomeState extends State<Home> {
           isSearching ?
               IconButton(onPressed: (){
                 context.read<HomeCubit>().allToDo();
-                setState(() { isSearching = false;});
+                setState(() { isSearching = false;
+                focus = false;});
               }, icon: Icon(Icons.cancel)) :
-              IconButton(onPressed: (){setState(() {isSearching = true;});}, icon: Icon(Icons.search))
+              IconButton(onPressed: (){
+                setState(() {isSearching = true;
+                focus = true;});
+
+                }, icon: Icon(Icons.search))
         ],
       ),
       body: BlocBuilder<HomeCubit,List<ToDoS>>(
