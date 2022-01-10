@@ -2,4 +2,8 @@
 
 A new Flutter project.
 
-To-do app with Bloc pattern.
+- Bloc pattern
+- SQLite
+
+
+https://user-images.githubusercontent.com/87732849/148773906-01f11836-1574-4a0d-8a1d-489c5e465295.mp4
