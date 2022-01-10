@@ -11,7 +11,6 @@ class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
-
 class _HomeState extends State<Home> {
 
   bool isSearching = false;
@@ -33,10 +32,10 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         backgroundColor: Colors.black38,
         title: isSearching ?
-        TextField(autofocus: focus,style: TextStyle(color: Colors.white), decoration: InputDecoration(hintText: "Ara",hintStyle: TextStyle(color:Colors.white)),onChanged: (result){
+        TextField(autofocus: focus,style: TextStyle(color: Colors.white), decoration: InputDecoration(hintText: "Search",hintStyle: TextStyle(color:Colors.white)),onChanged: (result){
           context.read<HomeCubit>().search(result);
         },) :
-        Text("Yapılacaklar"),
+        Text("Notes"),
         actions: [
           isSearching ?
               IconButton(onPressed: (){
@@ -47,7 +46,6 @@ class _HomeState extends State<Home> {
               IconButton(onPressed: (){
                 setState(() {isSearching = true;
                 focus = true;});
-
                 }, icon: Icon(Icons.search))
         ],
       ),
@@ -90,11 +88,11 @@ class _HomeState extends State<Home> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
-                                          Text("${todo.yapilacak_is} silinsin mi?",style: TextStyle(fontSize: screenHeight*0.02),),
+                                          Text("Delete ${todo.yapilacak_is}?",style: TextStyle(fontSize: screenHeight*0.02),),
                                         ],
                                       )),
                                   action: SnackBarAction(
-                                    label: "Evet",
+                                    label: "Yes",
                                     textColor: Colors.white,
                                     onPressed: (){
                                       context.read<HomeCubit>().delete(todo.yapilacak_id);
@@ -122,7 +120,7 @@ class _HomeState extends State<Home> {
             context.read<HomeCubit>().allToDo();
           });
         },
-        child: Icon(Icons.add,size: screenWidth*0.1,),
+        child: Icon(Icons.add),
         backgroundColor: Colors.red,
       ),
     );

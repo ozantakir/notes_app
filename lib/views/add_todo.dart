@@ -23,7 +23,7 @@ class _AddToDoState extends State<AddToDo> {
     final double screenWidth = screenInfo.size.width;
     return Scaffold(
       backgroundColor: Color(0xFF09132D),
-      appBar: AppBar(title: Text("Yeni bir yapılacak iş ekle"),
+      appBar: AppBar(title: Text("Add Note"),
           backgroundColor: Colors.black38
       ),
       body: Center(
@@ -36,7 +36,7 @@ class _AddToDoState extends State<AddToDo> {
                 TextField(
                   controller: tfToDo,
                   decoration: InputDecoration(
-                    hintText: "Başlık",
+                    hintText: "Title",
                     hintStyle: TextStyle(color: Colors.grey),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(width: 3, color: Colors.blueGrey),
@@ -56,7 +56,7 @@ class _AddToDoState extends State<AddToDo> {
                     minLines: (screenHeight*0.02).toInt(),
                     maxLines: (screenHeight*0.02).toInt(),
                     decoration: InputDecoration(
-                      hintText: "Açıklama",
+                      hintText: "Explanation",
                       hintStyle: TextStyle(color: Colors.grey),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(width: 3, color: Colors.blueGrey),
@@ -77,7 +77,7 @@ class _AddToDoState extends State<AddToDo> {
                     onPressed: (){
                   context.read<AddToDoCubit>().add(tfToDo.text,tfExplanation.text);
                   Navigator.pop(context);
-                }, child: Text("KAYDET")),
+                }, child: Text("SAVE")),
               ],
             ),
           ),

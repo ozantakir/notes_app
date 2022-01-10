@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:to_do_app/cubit/todo_details_cubit.dart';
 import 'package:to_do_app/entity/todos.dart';
@@ -36,7 +34,7 @@ class _ToDoDetailsState extends State<ToDoDetails> {
     final double screenWidth = screenInfo.size.width;
     return Scaffold(
       backgroundColor: Color(0xFF09132D),
-      appBar: AppBar(title: Text("Yapılacak İş"),backgroundColor: Colors.black38),
+      appBar: AppBar(title: Text("Details"),backgroundColor: Colors.black38),
       body: Center(
         child: Padding(
           padding: EdgeInsets.only(left: screenWidth*0.1,right: screenWidth*0.1),
@@ -47,8 +45,6 @@ class _ToDoDetailsState extends State<ToDoDetails> {
                 TextField(
                   controller: tfYapilacakIs,
                   decoration: InputDecoration(
-                    hintText: "Başlık",
-                    hintStyle: TextStyle(color: Colors.grey),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(width: 3, color: Colors.blueGrey),
                       borderRadius: BorderRadius.circular(15),
@@ -67,8 +63,6 @@ class _ToDoDetailsState extends State<ToDoDetails> {
                     minLines: (screenHeight*0.02).toInt(),
                     maxLines: (screenHeight*0.02).toInt(),
                     decoration: InputDecoration(
-                      hintText: "Açıklama",
-                      hintStyle: TextStyle(color: Colors.grey),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(width: 3, color: Colors.blueGrey),
                         borderRadius: BorderRadius.circular(15),
@@ -81,7 +75,6 @@ class _ToDoDetailsState extends State<ToDoDetails> {
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         primary: Colors.red
@@ -89,7 +82,7 @@ class _ToDoDetailsState extends State<ToDoDetails> {
                     onPressed: (){
                   context.read<ToDoDetailsCubit>().update(widget.todo.yapilacak_id, tfYapilacakIs.text,tfExplanation.text);
                   Navigator.pop(context);
-                }, child: Text("GÜNCELLE"))
+                }, child: Text("UPDATE"))
               ],
             ),
           ),

@@ -10,5 +10,4 @@ class AddToDoCubit extends Cubit<List<ToDoS>> {
   Future<void> add(String yapilacak_is,String yapilacak_is_detay) async {
     await tdRepo.addToDo(yapilacak_is,yapilacak_is_detay);
   }
-
 }

@@ -7,14 +7,7 @@ class ToDoDetailsCubit extends Cubit<List<ToDoS>> {
 
   var tdRepo = ToDoDaoRepo();
 
-
   Future<void> update(int yapilacak_id,String yapilacak_is,String yapilacak_is_detay) async {
     await tdRepo.updateToDo(yapilacak_id, yapilacak_is,yapilacak_is_detay);
   }
-
-
-
-
-
-
 }

@@ -26,7 +26,6 @@ class ToDoDaoRepo {
   Future<void> deleteToDo(int yapilacak_id) async {
     var db = await DbHelper.reachDb();
     await db.delete("yapilacaklar", where: "yapilacak_id = ?", whereArgs: [yapilacak_id]);
-
   }
 
   Future<List<ToDoS>> allToDoS() async {
@@ -48,6 +47,5 @@ class ToDoDaoRepo {
       var row = maps[index];
       return ToDoS(yapilacak_is: row["yapilacak_is"], yapilacak_id: row["yapilacak_id"],yapilacak_is_detay: row["yapilacak_is_detay"]);
     });
-
   }
 }

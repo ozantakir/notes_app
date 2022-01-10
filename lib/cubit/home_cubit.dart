@@ -21,9 +21,4 @@ class HomeCubit extends Cubit<List<ToDoS>> {
     var list = await tdRepo.searchToDo(searchWord);
     emit(list);
   }
-
-
-
-
-
 }

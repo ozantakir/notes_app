@@ -9,15 +9,12 @@ class DbHelper {
   static Future<Database> reachDb() async{
     String dbRoad = join(await getDatabasesPath(),dbName);
 
-    if(await databaseExists(dbRoad)){
-      print("Veritabanı zaten var, kopyalamaya gerek yok");
-    } else {
+    if(!await databaseExists(dbRoad)){
       ByteData data = await rootBundle.load("db/$dbName");
 
       List<int> bytes = data.buffer.asInt8List(data.offsetInBytes,data.lengthInBytes);
 
       await File(dbRoad).writeAsBytes(bytes, flush: true);
-
     }
 
     return openDatabase(dbRoad);
